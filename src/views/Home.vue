@@ -16,9 +16,5 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class Home extends Vue {
   public myString: string = '';
   private aNum: number = 12;
-
-  private mounted() {
-    console.log('i am mounted');
-  }
 }
 </script>
