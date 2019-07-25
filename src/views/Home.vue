@@ -1,8 +1,12 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    {{aNum}}
-  </div>
+  <v-container>
+    <v-layout row wrap>
+      <v-flex xs12 sm6 offset-sm3 class="text-center">
+        <img alt="Vue logo" src="../assets/logo.png" />
+        {{aNum}}
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script lang="ts">

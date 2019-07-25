@@ -1,14 +1,31 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/assessment">About</router-link>
-    </div>
-    <transition name="fade" mode="out-in">
-      <router-view></router-view>
-    </transition>
-  </div>
+  <v-app>
+    <v-content>
+      <v-app-bar color="blue darken-4" flat dark>
+        <v-toolbar-title>Hello</v-toolbar-title>
+      </v-app-bar>
+      <v-container>
+        <transition name="fade" mode="out-in">
+          <router-view></router-view>
+        </transition>
+      </v-container>
+    </v-content>
+    <BottomNav color="blue darken-4"></BottomNav>
+  </v-app>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import BottomNav from '@/components/BottomNav.vue';
+
+@Component({
+  components: {
+    BottomNav,
+  },
+})
+export default class App extends Vue {}
+</script>
+
 
 <style lang="less">
 .fade-enter-active,
