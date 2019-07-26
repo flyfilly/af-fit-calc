@@ -60,6 +60,7 @@
               </v-layout>
             </v-card-text>
             <v-card-actions>
+              <v-spacer></v-spacer>
               <v-tooltip bottom>
                 <template v-slot:activator="{on}">
                   <v-btn type="submit" v-on="on" icon>
