@@ -10,9 +10,27 @@ const getters = {
   },
 };
 
-const mutations = {};
+const mutations = {
+  setName(state: ProfileInterface, name: string) {
+    state.name = name;
+  },
 
-const actions = {};
+  setAge(state: ProfileInterface, age: number) {
+    state.age = age;
+  },
+
+  setGender(state: ProfileInterface, gender: Gender) {
+    state.gender = gender;
+  },
+};
+
+const actions = {
+  save({ commit }, { name, age, gender }: ProfileInterface) {
+    commit('setName', name);
+    commit('setAge', age);
+    commit('setGender', gender);
+  },
+};
 
 export const profile = {
   namespaced: true,

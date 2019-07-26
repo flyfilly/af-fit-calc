@@ -82,17 +82,19 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { State, Action } from 'vuex-class';
 import { Gender, ProfileInterface } from '@/store/modules/profile.module.ts';
 
 @Component
-export default class Profile extends Vue implements ProfileInterface {
-  public name: string = '';
-  public age: number = 0;
-  public gender: Gender = 0;
+export default class Profile extends Vue {
+  @State('profile') name;
+  @State('profile') age;
+  @State('profile') gender;
   private valid: boolean = false;
   private snackbar: boolean = false;
   private color: string = 'transparent';
   private text: string = '';
+  @Action('profile') private save: any;
 
   get isValid(): boolean {
     return !!(this.name || this.age || this.gender);
@@ -100,7 +102,12 @@ export default class Profile extends Vue implements ProfileInterface {
 
   private saveProfile(): void {
     if (this.isValid) {
-      console.log('saving...');
+      this.save({
+        name: this.name,
+        age: this.age,
+        gender: this.gender,
+      });
+
       this.color = 'success';
       this.text = 'Profile saved successfully!';
       this.snackbar = true;
