@@ -1,18 +1,18 @@
 <template>
-  <v-bottom-navigation class="color" dark flat>
+  <v-bottom-navigation class="transparent" flat>
     <v-btn value="recent" router to="/">
-      <span>Recent</span>
+      <span>Home</span>
       <v-icon>fa fa-history</v-icon>
     </v-btn>
 
     <v-btn value="favorites" router to="assessment">
-      <span>Favorites</span>
-      <v-icon>fa fa-heart</v-icon>
+      <span>Assessment</span>
+      <v-icon>fa fa-running</v-icon>
     </v-btn>
 
-    <v-btn value="nearby">
-      <span>Nearby</span>
-      <v-icon>fa fa-map-marker</v-icon>
+    <v-btn value="profile" router to="profile">
+      <span>Profile</span>
+      <v-icon>fa fa-id-card</v-icon>
     </v-btn>
   </v-bottom-navigation>
 </template>

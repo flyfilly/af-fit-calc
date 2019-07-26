@@ -1,10 +1,10 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-content>
-      <v-app-bar color="blue darken-4" flat dark>
+      <v-app-bar color="transparent" flat dark>
         <v-toolbar-title>Hello</v-toolbar-title>
       </v-app-bar>
-      <v-container>
+      <v-container class="pa-0">
         <transition name="fade" mode="out-in">
           <router-view></router-view>
         </transition>
