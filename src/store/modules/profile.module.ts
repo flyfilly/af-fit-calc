@@ -1,11 +1,11 @@
-const state: State = {
+const state: ProfileInterface = {
   name: null,
   age: 0,
   gender: null,
 };
 
 const getters = {
-  hasProfile(state: State): boolean {
+  hasProfile(state: ProfileInterface): boolean {
     return !!(state.name && state.gender && state.age > 1);
   },
 };
@@ -22,9 +22,9 @@ export const profile = {
   mutations,
 };
 
-interface State {
+export interface ProfileInterface {
   name: string | null;
-  age: number;
+  age: number | 0;
   gender: Gender | null;
 }
 

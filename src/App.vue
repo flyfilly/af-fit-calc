@@ -4,7 +4,7 @@
       <v-app-bar color="transparent" flat dark>
         <v-toolbar-title>Hello</v-toolbar-title>
       </v-app-bar>
-      <v-container class="pa-0">
+      <v-container>
         <transition name="fade" mode="out-in">
           <router-view></router-view>
         </transition>
