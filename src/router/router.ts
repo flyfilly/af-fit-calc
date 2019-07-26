@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Home from '@/views/Home.vue';
 
 Vue.use(Router);
 
@@ -17,13 +17,13 @@ export default new Router({
       path: '/assessment',
       name: 'assessment',
       component: () =>
-        import(/* webpackChunkName: "assessment" */ './views/Assessment.vue'),
+        import(/* webpackChunkName: "assessment" */ '@/views/Assessment.vue'),
     },
     {
       path: '/profile',
       name: 'profile',
       component: () =>
-        import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
+        import(/* webpackChunkName: "profile" */ '@/views/Profile.vue'),
     },
   ],
 });
