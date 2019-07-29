@@ -41,7 +41,7 @@ const actions = {
     commit('setName', name);
     commit('setAge', age);
     commit('setGender', gender);
-    dispatch('assessment/loadScoresheet', { gender, age }, { root: true });
+    dispatch('assessments/loadScoresheet', { gender, age }, { root: true });
   },
 
   setName({ commit }: any, name: string) {

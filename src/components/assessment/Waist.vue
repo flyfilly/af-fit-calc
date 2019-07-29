@@ -27,8 +27,8 @@ import { Action, Getter } from 'vuex-class';
 @Component
 export default class Waist extends Vue {
   private value: number = 0;
-  @Action('assessment/updateWaistScore') private update: any;
-  @Getter('assessment/getWaistScore') private waistScore!: ComponentResult;
+  @Action('assessments/updateWaistScore') private update: any;
+  @Getter('assessments/getWaistScore') private waistScore!: ComponentResult;
 
   @Watch('value')
   private valueChanged(newValue: number) {

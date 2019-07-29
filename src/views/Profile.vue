@@ -3,13 +3,14 @@
     <v-layout row wrap>
       <v-flex xs12 sm6 offset-sm3 class="text-center">
         <v-form ref="form" method="POST" v-model="valid" @submit.prevent="saveProfile">
-          <v-card>
+          <v-card color="transparent" flat dark>
             <v-card-title>My Profile</v-card-title>
             <v-card-text>
               <v-layout row wrap>
                 <v-flex xs12>
                   <v-text-field
-                    label="My name is"
+                    label="Name"
+                    prefix="My name is"
                     v-model="name"
                     class="mx-2"
                     :rules="[
@@ -18,18 +19,21 @@
                         'Gotta have a name!!'
                     ]"
                     autofocus
-                    filled
+                    rounded
+                    solo
                     light
+                    clearable
                   ></v-text-field>
                 </v-flex>
               </v-layout>
               <v-layout row wrap>
                 <v-flex xs12 sm8>
                   <v-text-field
-                    label="I am a"
-                    hint="Year old"
+                    label="Age"
+                    prefix="I am a"
+                    suffix="Year old"
                     v-model="age"
-                    class="mx-2"
+                    class="mx-2 white--text"
                     type="number"
                     :rules="[
                       v =>
@@ -37,8 +41,9 @@
                         'How we supposed to know which scorecard?!'
                     ]"
                     persistent-hint
-                    autofocus
-                    filled
+                    rounded
+                    solo
+                    clearable
                     light
                   ></v-text-field>
                 </v-flex>
