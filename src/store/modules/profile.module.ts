@@ -8,6 +8,18 @@ const getters = {
   hasProfile(state: ProfileInterface): boolean {
     return !!(state.name && state.gender && state.age > 1);
   },
+
+  getAge(state:ProfileInterface): number {
+    return state.age;
+  },
+
+  getName(state:ProfileInterface) : string {
+    return state.name || '';
+  },
+
+  getGender(state:ProfileInterface) : Gender | null {
+    return state.gender;
+  }
 };
 
 const mutations = {
@@ -26,6 +38,7 @@ const mutations = {
 
 const actions = {
   save({ commit }, { name, age, gender }: ProfileInterface) {
+    console.log("Im in the save finally!!!!");
     commit('setName', name);
     commit('setAge', age);
     commit('setGender', gender);

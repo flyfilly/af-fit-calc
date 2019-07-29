@@ -83,40 +83,39 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { mapState } from 'vuex';
+import { Action, Getter } from 'vuex-class';
 import { Gender, ProfileInterface } from '@/store/modules/profile.module.ts';
 
-@Component({
-  computed: {
-    ...mapState({
-      name: state => state.profile.name,
-      age: state => state.profile.age,
-      gender: state => state.profile.gender,
-    }),
-  },
-})
-export default class Profile extends Vue {
+@Component
+export default class Profile extends Vue implements ProfileInterface {
+  @Getter('profile/getName') name: string;
+  @Getter('profile/getAge') age: number;
+  @Getter('profile/getGender') gender : Gender;
+  // public name : string = '';
+  // public age : number = 0;
+  // public gender : Gender = 0;
   private valid: boolean = false;
   private snackbar: boolean = false;
   private color: string = 'transparent';
   private text: string = '';
+  @Action('profile/save') save : any;
 
-  // get isValid(): boolean {
-  //   return !!(this.name || this.age || this.gender);
-  // }
+  get isValid(): boolean {
+    return !!(this.name || this.age || this.gender);
+  }
 
-  // private saveProfile(): void {
-  //   if (this.isValid) {
-  //     this.save({
-  //       name: this.name,
-  //       age: this.age,
-  //       gender: this.gender,
-  //     });
+  private saveProfile(): void {
+    if (this.isValid) {
+      this.save({
+        name: this.name,
+        age: this.age,
+        gender: this.gender,
+      });
 
-  //     this.color = 'success';
-  //     this.text = 'Profile saved successfully!';
-  //     this.snackbar = true;
-  //   }
-  // }
+      this.color = 'success';
+      this.text = 'Profile saved successfully!';
+      this.snackbar = true;
+    }
+  }
 }
 </script>
