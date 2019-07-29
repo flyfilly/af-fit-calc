@@ -1,21 +1,21 @@
 <template>
   <v-sheet color="transparent" xs12 class="mx-2">
     <p>What is your current waist measurement?</p>
+
     <v-slider
       min="20"
       max="55"
-      color="accent"
+      :color="riskColor"
       v-model="value"
       step=".5"
       class="mt-5"
-      thumb-label="always"
+      thumb-label
       inverse-label
       ticks
     ></v-slider>
-    <v-chip pill>
-      <v-avatar left color="red">{{waistScore.points}}</v-avatar>
-      {{waistScore.risklevel}}
-    </v-chip>
+    <p
+      class="text-left"
+    >{{value}} inches is good for {{waistScore.points}} points{{waistScore.points > 0 ? '!!' : ''}}</p>
   </v-sheet>
 </template>
 
@@ -26,7 +26,7 @@ import { Action, Getter } from 'vuex-class';
 
 @Component
 export default class Waist extends Vue {
-  private value: number = 30;
+  private value: number = 0;
   @Action('assessment/updateWaistScore') private update: any;
   @Getter('assessment/getWaistScore') private waistScore!: ComponentResult;
 
@@ -37,6 +37,14 @@ export default class Waist extends Vue {
 
   private mounted() {
     this.value = this.waistScore.value;
+  }
+
+  private get riskColor() {
+    return this.waistScore.risklevel === 'low'
+      ? 'success'
+      : this.waistScore.risklevel === 'moderate'
+      ? 'accent'
+      : 'error';
   }
 }
 </script>
