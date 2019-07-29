@@ -9,17 +9,17 @@ const getters = {
     return !!(state.name && state.gender && state.age > 1);
   },
 
-  getAge(state:ProfileInterface): number {
+  getAge(state: ProfileInterface): number {
     return state.age;
   },
 
-  getName(state:ProfileInterface) : string {
+  getName(state: ProfileInterface): string {
     return state.name || '';
   },
 
-  getGender(state:ProfileInterface) : Gender | null {
+  getGender(state: ProfileInterface): Gender | null {
     return state.gender;
-  }
+  },
 };
 
 const mutations = {
@@ -37,10 +37,22 @@ const mutations = {
 };
 
 const actions = {
-  save({ commit }, { name, age, gender }: ProfileInterface) {
-    console.log("Im in the save finally!!!!");
+  save({ commit, dispatch }: any, { name, age, gender }: ProfileInterface) {
     commit('setName', name);
     commit('setAge', age);
+    commit('setGender', gender);
+    dispatch('assessment/loadScoresheet', { gender, age }, { root: true });
+  },
+
+  setName({ commit }: any, name: string) {
+    commit('setName', name);
+  },
+
+  setAge({ commit }: any, age: number) {
+    commit('setAge', age);
+  },
+
+  setGender({ commit }: any, gender: Gender) {
     commit('setGender', gender);
   },
 };

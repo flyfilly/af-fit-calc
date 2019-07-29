@@ -83,25 +83,29 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { Action, Getter } from 'vuex-class';
-import { Gender, ProfileInterface } from '@/store/modules/profile.module.ts';
+import { Action } from 'vuex-class';
+import { Gender } from '@/store/modules/profile.module.ts';
+const namespace = 'profile';
 
 @Component
-export default class Profile extends Vue implements ProfileInterface {
-  @Getter('profile/getName') name: string;
-  @Getter('profile/getAge') age: number;
-  @Getter('profile/getGender') gender : Gender;
-  // public name : string = '';
-  // public age : number = 0;
-  // public gender : Gender = 0;
+export default class Profile extends Vue {
+  @Action('profile/save') private save: any;
+  private name: string = '';
+  private age: number = 0;
+  private gender: Gender = 0;
   private valid: boolean = false;
   private snackbar: boolean = false;
   private color: string = 'transparent';
   private text: string = '';
-  @Action('profile/save') save : any;
 
   get isValid(): boolean {
     return !!(this.name || this.age || this.gender);
+  }
+
+  private mounted() {
+    this.name = this.$store.getters['profile/getName'];
+    this.age = this.$store.getters['profile/getAge'];
+    this.gender = this.$store.getters['profile/getGender'];
   }
 
   private saveProfile(): void {

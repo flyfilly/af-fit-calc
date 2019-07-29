@@ -1,14 +1,42 @@
+import { Gender } from '@/store/modules/profile.module.ts';
+
+export const agemap: ageRange[] = [
+  { low: 0, high: 29 },
+  { low: 30, high: 39 },
+  { low: 40, high: 49 },
+  { low: 50, high: 59 },
+  { low: 60, high: 999 },
+];
+
 const state: State = {
-  scorecard: null,
+  scoresheet: null,
   assessment: null,
   assessments: [],
 };
 
-const getters = {};
+const getters = {
+  getScoresheet(state: State): Scoresheet | null {
+    return state.scoresheet;
+  },
+};
 
-const mutations = {};
+const mutations = {
+  setScoresheet(state: State, scoresheet: Scoresheet) {
+    state.scoresheet = scoresheet;
+  },
+};
 
-const actions = {};
+const actions = {
+  async loadScoresheet({ commit }: any, { gender, age }: any) {
+    console.log(gender);
+    const url: string = `https://playground-81531.firebaseio.com/${
+      Gender[gender]
+    }/${agemap.findIndex(i => i.low <= age && i.high >= age)}.json`;
+
+    const response = await fetch(url);
+    commit('setScoresheet', await response.json());
+  },
+};
 
 export const assessment = {
   namespaced: true,
@@ -27,7 +55,7 @@ export interface Assessment {
   result: Result;
 }
 
-export interface Scorecard {
+export interface Scoresheet {
   agehigh: number;
   agelow: number;
   gender: string;
@@ -75,8 +103,13 @@ export enum Result {
   failed,
 }
 
+interface ageRange {
+  low: number;
+  high: number;
+}
+
 interface State {
-  scorecard: Scorecard | null;
+  scoresheet: Scoresheet | null;
   assessment: Assessment | null;
   assessments: Assessment[];
 }
