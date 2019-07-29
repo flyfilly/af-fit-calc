@@ -12,33 +12,63 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click="portion = 2" color="accent" text small>Let's do some Pushups!</v-btn>
+          <v-btn @click="portion = 2" color="accent" text x-small>Let's do some Pushups!</v-btn>
         </v-card-actions>
       </v-card>
     </v-stepper-content>
 
     <v-stepper-step :complete="portion > 2" step="2">Push-ups</v-stepper-step>
     <v-stepper-content step="2">
-      <Pushups></Pushups>
+      <v-card color="transparent" class="ma-0 pa-0">
+        <v-card-text class="ma-0 pa-0">
+          <Pushups></Pushups>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn @click="portion--" icon x-small>
+            <v-icon x-small>fas fa-undo</v-icon>
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn @click="portion++" color="accent" text x-small>Let's do some Situps!</v-btn>
+        </v-card-actions>
+      </v-card>
     </v-stepper-content>
 
     <v-stepper-step :complete="portion > 3" step="3">Situps</v-stepper-step>
     <v-stepper-content step="3">
-      <Situps></Situps>
+      <v-card color="transparent" class="ma-0 pa-0">
+        <v-card-text class="ma-0 pa-0">
+          <Situps></Situps>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn @click="portion--" icon x-small>
+            <v-icon x-small>fas fa-undo</v-icon>
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn @click="portion++" color="accent" text x-small>Time to run!</v-btn>
+        </v-card-actions>
+      </v-card>
     </v-stepper-content>
 
-    <v-stepper-step step="4">Run</v-stepper-step>
+    <v-stepper-step :complete="portion > 4" step="4">Run</v-stepper-step>
     <v-stepper-content step="4">
-      <Run></Run>
+      <v-card color="transparent" class="ma-0 pa-0">
+        <v-card-text class="ma-0 pa-0">
+          <Run></Run>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn @click="portion--" icon x-small>
+            <v-icon x-small>fas fa-undo</v-icon>
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn @click="portion++" color="accent" text x-small>All done!</v-btn>
+        </v-card-actions>
+      </v-card>
     </v-stepper-content>
 
     <v-stepper-step step="5">Results</v-stepper-step>
     <v-stepper-content step="5">
       <v-card color="transparent">
-        <v-card-actions>
-          <v-btn color="accent" @click="portion = 1">Continue</v-btn>
-          <v-btn text>Cancel</v-btn>
-        </v-card-actions>
+        <v-card-actions></v-card-actions>
       </v-card>
     </v-stepper-content>
   </v-stepper>

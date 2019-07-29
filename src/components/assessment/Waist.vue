@@ -15,7 +15,7 @@
     ></v-slider>
     <p
       class="text-left"
-    >{{ waistScore.points > 0 ? `${value} is good for ${waistScore.points} points!` : `${value} is higher than your minimum.`}}</p>
+    >{{ waistScore.points > 0 ? `${value} inches is good for ${waistScore.points} points!` : `${value} is higher than your maximum.`}}</p>
   </v-sheet>
 </template>
 
