@@ -69,7 +69,7 @@
             <v-icon x-small>fas fa-undo</v-icon>
           </v-btn>
           <v-spacer></v-spacer>
-          <v-btn @click="portion++" color="accent" text x-small>How'd I do?</v-btn>
+          <v-btn @click="getResults()" color="accent" text x-small>How'd I do?</v-btn>
         </v-card-actions>
       </v-card>
     </v-stepper-content>
@@ -82,7 +82,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="accent" text x-small>All done!</v-btn>
+          <v-btn @click="archiveAssessment()" color="accent" text x-small>All done!</v-btn>
         </v-card-actions>
       </v-card>
     </v-stepper-content>
@@ -92,7 +92,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { ComponentResult } from '@/store/modules/assessment.module.ts';
-import { Getter } from 'vuex-class';
+import { Action, Getter } from 'vuex-class';
 import Waist from '@/components/assessment/Waist.vue';
 import Pushups from '@/components/assessment/Pushups.vue';
 import Situps from '@/components/assessment/Situps.vue';
@@ -109,10 +109,22 @@ import Results from '@/components/assessment/Result.vue';
   },
 })
 export default class Assessment extends Vue {
+  @Action('assessments/save') private save: any;
+  @Action('assessments/calculateResult') private calcResults: any;
   @Getter('assessments/getWaistScore') private waistScore!: ComponentResult;
   @Getter('assessments/getPushupsScore') private pushupsScore!: ComponentResult;
   @Getter('assessments/getSitupsScore') private situpsScore!: ComponentResult;
   @Getter('assessments/getRunScore') private runScore!: ComponentResult;
   private portion: number = 0;
+
+  private archiveAssessment() {
+    this.save();
+    this.portion = 1;
+  }
+
+  private getResults() {
+    this.calcResults();
+    this.portion++;
+  }
 }
 </script>

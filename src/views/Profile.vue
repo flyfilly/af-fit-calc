@@ -12,7 +12,7 @@
                     label="Name"
                     prefix="My name is"
                     v-model="name"
-                    class="mx-2"
+                    class="mx-2 primary--text"
                     :rules="[
                       v =>
                         isValid ||
@@ -33,7 +33,7 @@
                     prefix="I am a"
                     suffix="Year old"
                     v-model="age"
-                    class="mx-2 white--text"
+                    class="mx-2 primary--text"
                     type="number"
                     :rules="[
                       v =>

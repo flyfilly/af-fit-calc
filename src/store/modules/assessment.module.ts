@@ -164,9 +164,38 @@ const mutations = {
   setResult(state: State, result: boolean) {
     state.assessment.result = result ? Result.passed : Result.failed;
   },
+
+  saveAssessment(state: State) {
+    state.history.push(state.assessment);
+  },
+
+  resetAssessment(state: State) {
+    state.assessment = {
+      result: Result.failed,
+      score: 0,
+      date: new Date().toLocaleDateString(),
+      waistScore: { points: 0, passed: false, value: 0, risklevel: '' },
+      pushupsScore: { points: 0, passed: false, value: 0, risklevel: '' },
+      situpsScore: { points: 0, passed: false, value: 0, risklevel: '' },
+      runScore: {
+        points: 0,
+        passed: false,
+        risklevel: '',
+        value: {
+          mm: 0,
+          ss: 0,
+        },
+      },
+    };
+  }
 };
 
 const actions = {
+  save({ commit }: any) {
+    commit('saveAssessment');
+    commit('resetAssessment');
+  },
+
   async loadScoresheet({ commit }: any, { gender, age }: any) {
     const url: string = `https://playground-81531.firebaseio.com/${
       Gender[gender]
