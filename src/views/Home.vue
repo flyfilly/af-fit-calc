@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <v-layout v-if="0 < history.length" row wrap>
-      <v-flex xs12 sm4>
-        <v-card class="ma-4" v-for="(assessment, index) in history" :key="index">
+      <v-flex xs12 sm4 v-for="(assessment, index) in history" :key="index">
+        <v-card class="ma-4">
           <v-card-title>{{assessment.date}}</v-card-title>
           <v-card-text>
             <v-layout row>
