@@ -48,12 +48,12 @@ export default class Run extends Vue {
   @Getter('assessments/getRunScore') private runScore!: ComponentResult;
 
   @Watch('mm')
-  private minutesChanged(newMinutes: any) {
+  private minutesChanged(newMinutes: number) {
     this.update({ mm: newMinutes, ss: this.ss });
   }
 
   @Watch('ss')
-  private secondsChanged(newSeconds: any) {
+  private secondsChanged(newSeconds: number) {
     this.update({ mm: this.mm, ss: newSeconds });
   }
 
