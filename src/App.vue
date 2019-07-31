@@ -3,7 +3,7 @@
     <v-content>
       <v-app-bar color="transparent" flat dark>
         <img :src="require('../public/img/icons/safari-pinned-tab.svg')" height="40" width="60" />
-        <v-toolbar-title>{{$route.name}}</v-toolbar-title>
+        <v-toolbar-title>{{$route.name ? $route.name.toUpperCase() : ''}}</v-toolbar-title>
       </v-app-bar>
       <v-container>
         <transition name="fade" mode="out-in">

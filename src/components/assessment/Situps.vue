@@ -4,7 +4,7 @@
 
     <v-slider
       min="0"
-      max="100"
+      :max="max"
       :color="riskColor"
       v-model="value"
       step="1"
@@ -28,6 +28,7 @@ import { Action, Getter } from 'vuex-class';
 export default class Situps extends Vue {
   private value: number = 0;
   @Action('assessments/updateSitupsScore') private update: any;
+  @Getter('assessments/getSitupsMax') private max!: number;
   @Getter('assessments/getSitupsScore') private situpsScore!: ComponentResult;
 
   @Watch('value')

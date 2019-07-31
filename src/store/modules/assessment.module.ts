@@ -107,6 +107,28 @@ const state: State = {
 };
 
 const getters = {
+  getPushupsMax(state: State) {
+    let max = 0;
+
+    try {
+      max = state.scoresheet.pushups[0].low;
+    } catch (error) {
+      max = 100;
+    }
+    return max;
+  },
+
+  getSitupsMax(state: State) {
+    let max = 0;
+
+    try {
+      max = state.scoresheet.situps[0].low;
+    } catch (error) {
+      max = 100;
+    }
+    return max;
+  },
+
   getScoresheet(state: State): Scoresheet | null {
     return state.scoresheet;
   },

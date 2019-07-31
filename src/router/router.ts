@@ -10,18 +10,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Journal',
+      name: 'home',
       component: Home,
     },
     {
       path: '/assessment',
-      name: 'Assessment',
+      name: 'assessment',
       component: () =>
         import(/* webpackChunkName: "assessment" */ '@/views/Assessment.vue'),
     },
     {
       path: '/profile',
-      name: 'Profile',
+      name: 'profile',
       component: () =>
         import(/* webpackChunkName: "profile" */ '@/views/Profile.vue'),
     },

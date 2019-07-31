@@ -5,7 +5,7 @@
       <v-flex xs12 sm6>
         <v-slider
           min="0"
-          max="59"
+          max="35"
           label="Mins"
           :color="riskColor"
           v-model="mm"

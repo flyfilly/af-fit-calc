@@ -4,7 +4,7 @@
 
     <v-slider
       min="0"
-      max="100"
+      :max="max"
       :color="riskColor"
       v-model="value"
       step="1"
@@ -28,6 +28,7 @@ import { Action, Getter } from 'vuex-class';
 export default class Pushups extends Vue {
   private value: number = 0;
   @Action('assessments/updatePushupsScore') private update: any;
+  @Getter('assessments/getPushupsMax') private max!: number;
   @Getter('assessments/getPushupsScore') private pushupsScore!: ComponentResult;
 
   @Watch('value')
