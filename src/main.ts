@@ -9,11 +9,11 @@ import '@fortawesome/fontawesome-free/css/all.css';
 
 Vue.config.productionTip = false;
 
-router.beforeEach((to, from, next) => {
-  if (!store.getters['profile/hasProfile'] && to.name !== 'profile')
-    return next('profile');
-  return next();
-});
+// router.beforeEach((to, from, next) => {
+//   if (!store.getters['profile/hasProfile'] && to.name !== 'profile')
+//     return next('profile');
+//   return next();
+// });
 
 new Vue({
   router,

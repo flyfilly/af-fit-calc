@@ -1,16 +1,16 @@
 <template>
-  <v-bottom-navigation class="transparent" flat>
-    <v-btn value="recent" router to="/">
-      <span>Home</span>
-      <v-icon>fa fa-history</v-icon>
+  <v-bottom-navigation class="pa-0 ma-0" flat>
+    <v-btn value="recent" style="height:56px !important;" router to="/">
+      <span>Journal</span>
+      <v-icon>fa fa-book</v-icon>
     </v-btn>
 
-    <v-btn value="favorites" router to="assessment">
+    <v-btn value="favorites" style="height:56px !important;" router to="assessment">
       <span>Assessment</span>
       <v-icon>fa fa-running</v-icon>
     </v-btn>
 
-    <v-btn value="profile" router to="profile">
+    <v-btn value="profile" style="height:56px !important;" router to="profile">
       <span>Profile</span>
       <v-icon>fa fa-id-card</v-icon>
     </v-btn>

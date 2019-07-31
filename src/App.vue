@@ -2,7 +2,8 @@
   <v-app dark>
     <v-content>
       <v-app-bar color="transparent" flat dark>
-        <v-toolbar-title>Hello</v-toolbar-title>
+        <img :src="require('../public/img/icons/safari-pinned-tab.svg')" height="40" width="60" />
+        <v-toolbar-title>{{$route.name}}</v-toolbar-title>
       </v-app-bar>
       <v-container>
         <transition name="fade" mode="out-in">
