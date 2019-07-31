@@ -192,7 +192,7 @@ const mutations = {
   },
 
   saveAssessment(state: State) {
-    state.history.push(state.assessment);
+    state.history.unshift(state.assessment);
   },
 
   resetAssessment(state: State) {
@@ -258,17 +258,22 @@ const actions = {
   },
 
   updateRunScore({ commit, state }: any, { mm, ss }: any) {
-    const total = mm * 60 + ss;
-    const result =
-      state.scoresheet.runs.find(
+    let result = null;
+    try {
+      const total = mm * 60 + ss;
+      result = state.scoresheet.runs.find(
         (set: any) => set.totallow <= total && set.totalhigh >= total,
-      ) || state.scoresheet.runs[state.scoresheet.runs.length];
+      );
+    } catch (error) {
+      result = state.scoresheet.runs[state.scoresheet.runs.length];
+    } finally {
+      result.value = {
+        mm,
+        ss,
+      };
 
-    result.value = {
-      mm,
-      ss,
-    };
-    commit('setRunScore', result);
+      commit('setRunScore', result);
+    }
   },
 
   calculateResult({ commit, state }: any) {
