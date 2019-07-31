@@ -232,16 +232,16 @@ const actions = {
   },
 
   updateRunScore({ commit, state }: any, { mm, ss }: any) {
-    const total = mm * 60 + ss;
-    const result = state.scoresheet.runs.find(
-      (set: any) => set.totallow <= total && set.totalhigh >= total,
-    );
+      const total = mm * 60 + ss;
+      const result = state.scoresheet.runs.find(
+        (set: any) => set.totallow <= total && set.totalhigh >= total,
+      ) || state.scoresheet.runs[state.scoresheet.runs.length];
 
-    result.value = {
-      mm,
-      ss,
-    };
-    commit('setRunScore', result);
+      result.value = {
+        mm,
+        ss,
+      };
+      commit('setRunScore', result);
   },
 
   calculateResult({ commit, state }: any) {
